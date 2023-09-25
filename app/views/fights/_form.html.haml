@@ -1,0 +1,26 @@
+= form_with model: @fight, url: fights_path do |form|
+  - if @fight.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@fight.errors.count, "error")} prohibited this fight from being saved:"
+      %ul
+        - @fight.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = form.label :character1_id, "Select the first character"
+    = form.collection_select :character1_id, @characters, :id, :name, prompt: "Select a character"
+
+  .field
+    = form.label :weapon1_id, "Select the first weapon"
+    = form.collection_select :weapon1_id, @weapons, :id, :name, prompt: "Select a weapon"
+
+  .field
+    = form.label :character2_id, "Select the second character"
+    = form.collection_select :character2_id, @characters, :id, :name, prompt: "Select a character"
+
+  .field
+    = form.label :weapon2_id, "Select the second weapon"
+    = form.collection_select :weapon2_id, @weapons, :id, :name, prompt: "Select a weapon"
+
+  .actions
+    = form.submit "Initiate Fight"

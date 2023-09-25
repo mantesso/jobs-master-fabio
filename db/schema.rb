@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_25_124115) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_140438) do
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.integer "life_points"
@@ -23,8 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_124115) do
     t.integer "character1_id", null: false
     t.integer "character2_id", null: false
     t.integer "winner_id"
-    t.integer "weapon1_id", null: false
-    t.integer "weapon2_id", null: false
+    t.integer "weapon1_id"
+    t.integer "weapon2_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character1_id"], name: "index_fights_on_character1_id"
