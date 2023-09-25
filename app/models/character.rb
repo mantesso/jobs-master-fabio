@@ -8,6 +8,13 @@ class Character < ApplicationRecord
   validates :attack_points, presence: true,
                             numericality: { only_integer: true, greater_than_or_equal_to: 5, less_than_or_equal_to: 50 }
 
+  scope :alive, -> { where(deleted_at: nil) }
+
+  # "soft deletes" a character so that fight history is preserved
+  def soft_delete
+    update(deleted_at: Time.current)
+  end
+
   def fights
     Fight.where('character1_id = ? OR character2_id = ?', id, id).count
   end
