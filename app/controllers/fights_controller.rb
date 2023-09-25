@@ -17,12 +17,25 @@ class FightsController < ApplicationController
                          'The fight was a tie!'
                        end
 
-      redirect_to root_path
+      redirect_to fight_path(@fight)
     else
       @characters = Character.all
       @weapons = Weapon.all
       render :new
     end
+  end
+
+  def show
+    @fight = Fight.find(params[:id])
+    @character1 = @fight.character1
+    @character2 = @fight.character2
+    @weapon1 = @fight.weapon1
+    @weapon2 = @fight.weapon2
+    @winner = @fight.winner
+  end
+
+  def index
+    @fights = Fight.all
   end
 
   private

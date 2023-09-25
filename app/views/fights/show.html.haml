@@ -1,0 +1,23 @@
+%h1 Fight Details
+
+%p
+  %strong Character 1:
+  = @character1.name
+
+%p
+  %strong Character 2:
+  = @character2.name
+
+%p
+  %strong Weapon 1:
+  = @weapon1 ? @weapon1.name : "No weapon"
+
+%p
+  %strong Weapon 2:
+  = @weapon2 ? @weapon2.name : "No weapon"
+
+%p
+  %strong Winner:
+  = @winner ? @winner.name : "It's a tie!"
+
+= link_to 'Back to Home', root_path
