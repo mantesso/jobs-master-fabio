@@ -1,11 +1,27 @@
 class FightsController < ApplicationController
+  def new
+    @fight = Fight.new
+    @characters = Character.all
+    @weapons = Weapon.all
+  end
+
   def create
     @fight = Fight.new(fight_params)
+
     if @fight.save
       FightService.new(@fight).perform
-      redirect_to @fight, notice: "The winner is #{@fight.winner.name}"
+
+      flash[:notice] = if @fight.winner
+                         "Fight winner is #{@fight.winner.name}"
+                       else
+                         'The fight was a tie!'
+                       end
+
+      redirect_to root_path
     else
-      # handle failure
+      @characters = Character.all
+      @weapons = Weapon.all
+      render :new
     end
   end
 

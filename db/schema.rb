@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_124115) do
   create_table "fights", force: :cascade do |t|
     t.integer "character1_id", null: false
     t.integer "character2_id", null: false
-    t.integer "winner_id", null: false
+    t.integer "winner_id"
     t.integer "weapon1_id", null: false
     t.integer "weapon2_id", null: false
     t.datetime "created_at", null: false
@@ -41,9 +41,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_124115) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "fights", "character1s"
-  add_foreign_key "fights", "character2s"
-  add_foreign_key "fights", "weapon1s"
-  add_foreign_key "fights", "weapon2s"
-  add_foreign_key "fights", "winners"
+  add_foreign_key "fights", "characters", column: "character1_id"
+  add_foreign_key "fights", "characters", column: "character2_id"
+  add_foreign_key "fights", "characters", column: "winner_id"
+  add_foreign_key "fights", "weapons", column: "weapon1_id"
+  add_foreign_key "fights", "weapons", column: "weapon2_id"
 end

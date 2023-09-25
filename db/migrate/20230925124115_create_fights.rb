@@ -1,12 +1,11 @@
 class CreateFights < ActiveRecord::Migration[7.0]
   def change
     create_table :fights do |t|
-      t.references :character1, null: false, foreign_key: true
-      t.references :character2, null: false, foreign_key: true
-      t.references :winner, null: false, foreign_key: true
-      t.references :weapon1, null: false, foreign_key: true
-      t.references :weapon2, null: false, foreign_key: true
-
+      t.references :character1, foreign_key: { to_table: :characters }, null: false
+      t.references :character2, foreign_key: { to_table: :characters }, null: false
+      t.references :winner, foreign_key: { to_table: :characters }, null: true
+      t.references :weapon1, foreign_key: { to_table: :weapons }, null: false
+      t.references :weapon2, foreign_key: { to_table: :weapons }, null: false
       t.timestamps
     end
   end
