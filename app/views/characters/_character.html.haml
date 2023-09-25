@@ -1,9 +1,8 @@
-.card
-  .card-header
-    %h3= character.name
-
-  .card-body
-    %ul
+%div{class: 'bg-white rounded-lg shadow p-4 w-64 mb-4'}
+  %div{class: 'text-xl font-bold mb-2'}
+    = character.name
+  %div{class: 'text-gray-700 text-base'}
+    %ul{class: 'list-inside list-disc'}
       %li
         %strong Life Points: 
         = character.life_points
@@ -16,4 +15,7 @@
       %li
         %strong Win Rate: 
         = "#{character.win_rate}%"
-
+  %div{class: 'mt-4 flex justify-between'}
+    = link_to 'View Details', character_path(character), class: 'text-blue-500 hover:underline'
+    = link_to 'Edit', edit_character_path(character), class: 'text-yellow-500 hover:underline'
+    = link_to 'Delete', character_path(character), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500 hover:underline'
