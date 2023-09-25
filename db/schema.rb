@@ -10,5 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_124115) do
+  create_table "characters", force: :cascade do |t|
+    t.string "name"
+    t.integer "life_points"
+    t.integer "attack_points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fights", force: :cascade do |t|
+    t.integer "character1_id", null: false
+    t.integer "character2_id", null: false
+    t.integer "winner_id", null: false
+    t.integer "weapon1_id", null: false
+    t.integer "weapon2_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character1_id"], name: "index_fights_on_character1_id"
+    t.index ["character2_id"], name: "index_fights_on_character2_id"
+    t.index ["weapon1_id"], name: "index_fights_on_weapon1_id"
+    t.index ["weapon2_id"], name: "index_fights_on_weapon2_id"
+    t.index ["winner_id"], name: "index_fights_on_winner_id"
+  end
+
+  create_table "weapons", force: :cascade do |t|
+    t.string "name"
+    t.integer "attack_points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "fights", "character1s"
+  add_foreign_key "fights", "character2s"
+  add_foreign_key "fights", "weapon1s"
+  add_foreign_key "fights", "weapon2s"
+  add_foreign_key "fights", "winners"
 end

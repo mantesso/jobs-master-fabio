@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @character.name
+%p
+  %b Life points:
+  = @character.life_points
+%p
+  %b Attack points:
+  = @character.attack_points
+
+= link_to 'Edit', edit_character_path(@character)
+\|
+= link_to 'Back', characters_path
