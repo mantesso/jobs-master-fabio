@@ -1,0 +1,19 @@
+.card
+  .card-header
+    %h3= character.name
+
+  .card-body
+    %ul
+      %li
+        %strong Life Points: 
+        = character.life_points
+      %li
+        %strong Attack Points: 
+        = character.attack_points
+      %li
+        %strong Total Fights: 
+        = character.fights
+      %li
+        %strong Win Rate: 
+        = "#{character.win_rate}%"
+

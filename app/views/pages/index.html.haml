@@ -1,2 +1,5 @@
 %h1
   Hello World!
+- @characters.each do |character|
+  = render partial: 'characters/character', locals: { character: character }
+
