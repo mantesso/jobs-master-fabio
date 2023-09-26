@@ -5,6 +5,9 @@
   %div{class: 'text-xl font-bold mb-2 text-center'}
     = character.name
   %div{class: 'text-white text-base mt-2'}
+    %div{class:'flex justify-between items-center text-lg mb-1 bg-black bg-opacity-30 rounded-md px-2'}
+      %strong XP
+      = character.xp
     %div{class:'flex justify-between items-center mb-1'}
       %strong Life Points 
       = character.life_points

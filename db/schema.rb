@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_25_154432) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_26_150448) do
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.integer "life_points"
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_154432) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.integer "xp", default: 0
     t.index ["deleted_at"], name: "index_characters_on_deleted_at"
   end
 

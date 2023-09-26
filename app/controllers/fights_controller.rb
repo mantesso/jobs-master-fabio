@@ -12,7 +12,7 @@ class FightsController < ApplicationController
       FightService.new(@fight).perform
 
       flash[:notice] = if @fight.winner
-                         "Fight winner is #{@fight.winner.name}"
+                         "#{@fight.winner.name} won! They gained #{FightService::XP_GAIN} XP and #{FightService::ATTACK_POINT_GAIN} attack points."
                        else
                          'The fight was a tie!'
                        end

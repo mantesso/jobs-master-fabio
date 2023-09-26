@@ -34,14 +34,10 @@ class CharactersController < ApplicationController
 
   # PATCH/PUT /characters/1 or /characters/1.json
   def update
-    respond_to do |format|
-      if @character.update(character_params)
-        format.html { redirect_to character_url(@character), notice: 'Character was successfully updated.' }
-        format.json { render :show, status: :ok, location: @character }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @character.errors, status: :unprocessable_entity }
-      end
+    if @character.update(character_params)
+      redirect_to characters_path, notice: 'Character was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

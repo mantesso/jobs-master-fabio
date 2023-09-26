@@ -1,4 +1,7 @@
 class FightService
+  XP_GAIN = 15
+  ATTACK_POINT_GAIN = 1
+
   def initialize(fight)
     @fight = fight
     @character1 = fight.character1
@@ -6,28 +9,40 @@ class FightService
   end
 
   def perform
-    character1_life = @character1.life_points
-    character2_life = @character2.life_points
+    compute_battle
+    determine_winner
+    award_winner if @fight.winner
+  end
 
+  private
+
+  def compute_battle
     character1_attack = @character1.attack_points + @fight.weapon1&.attack_points.to_i
     character2_attack = @character2.attack_points + @fight.weapon2&.attack_points.to_i
 
-    while character1_life > 0 && character2_life > 0
-      character2_life -= character1_attack
-      break if character2_life <= 0
+    @character1_life = @character1.life_points
+    @character2_life = @character2.life_points
 
-      character1_life -= character2_attack
-      break if character1_life <= 0
+    while @character1_life.positive? && @character2_life.positive?
+      @character2_life -= character1_attack
+      break if @character2_life <= 0
+
+      @character1_life -= character2_attack
     end
+  end
 
-    # Determine the winner
-    if character1_life > character2_life
+  def determine_winner
+    if @character1_life > @character2_life
       @fight.winner = @character1
-    elsif character2_life > character1_life
+    elsif @character2_life > @character1_life
       @fight.winner = @character2
     end
-    # if @fight.winner.nil? the fight was a tie
-
     @fight.save!
+  end
+
+  def award_winner
+    @fight.winner.xp += XP_GAIN
+    @fight.winner.attack_points += ATTACK_POINT_GAIN
+    @fight.winner.save!
   end
 end
