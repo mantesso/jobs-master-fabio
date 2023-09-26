@@ -10,4 +10,6 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-    = yield
+    = render 'shared/navbar'
+    %div{class: 'p-32 bg-slate-800 h-screen'}
+      = yield

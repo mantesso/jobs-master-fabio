@@ -1,21 +1,22 @@
-%div{class: 'bg-white rounded-lg shadow p-4 w-64 mb-4'}
-  %div{class: 'text-xl font-bold mb-2'}
+- gradient_classes = ["from-red-500 to-yellow-500", "from-green-500 to-blue-500", "from-purple-500 to-pink-500", "from-indigo-500 to-teal-500"]
+- gradient_class = gradient_classes[character.id % gradient_classes.length]
+
+%div{class: "bg-gradient-to-br #{gradient_class} text-white rounded-lg shadow p-8 w-56 mb-4 transform hover:scale-105 transition-transform"}
+  %div{class: 'text-xl font-bold mb-2 text-center'}
     = character.name
-  %div{class: 'text-gray-700 text-base'}
-    %ul{class: 'list-inside list-disc'}
-      %li
-        %strong Life Points: 
-        = character.life_points
-      %li
-        %strong Attack Points: 
-        = character.attack_points
-      %li
-        %strong Total Fights: 
-        = character.fights
-      %li
-        %strong Win Rate: 
-        = "#{character.win_rate}%"
-  %div{class: 'mt-4 flex justify-between'}
-    = link_to 'View Details', character_path(character), class: 'text-blue-500 hover:underline'
-    = link_to 'Edit', edit_character_path(character), class: 'text-yellow-500 hover:underline'
-    = link_to 'Delete', character_path(character), method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500 hover:underline'
+  %div{class: 'text-white text-base mt-2'}
+    %div{class:'flex justify-between items-center mb-1'}
+      %strong Life Points 
+      = character.life_points
+    %div{class:'flex justify-between items-center mb-1'}
+      %strong Attack Points
+      = character.attack_points
+    %div{class:'flex justify-between items-center mb-1'}
+      %strong Total Fights
+      = character.fights
+    %div{class:'flex justify-between items-center mb-1'}
+      %strong Win Rate
+      = "#{character.win_rate}%"
+  %div{class: 'mt-8 flex justify-between text-gray-100 text-sm'}
+    = link_to 'Edit', edit_character_path(character), class: 'hover:text-indigo-500 transition duration-300'
+    = link_to 'Delete', character_path(character), method: :delete, data: { confirm: 'Are you sure?' }, class: 'hover:text-red-500 transition duration-300'

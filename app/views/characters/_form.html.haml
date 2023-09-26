@@ -1,19 +1,22 @@
-= form_for @character do |f|
+= form_for @character, html: { class: 'bg-slate-700 p-6 rounded shadow-md space-y-8' } do |f|
   - if @character.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@character.errors.count, "error")} prohibited this character from being saved:"
+    %div{ class: 'bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6' }
+      %h2{ class: 'font-bold mb-2' }= "#{pluralize(@character.errors.count, "error")} prohibited this character from being saved:"
       %ul
         - @character.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :life_points
-    = f.number_field :life_points
-  .field
-    = f.label :attack_points
-    = f.number_field :attack_points
-  .actions
-    = f.submit 'Save'
+  %div{ class: 'flex flex-col space-y-2' }
+    = f.label :name, class: 'font-semibold text-gray-200'
+    = f.text_field :name, class: 'border rounded px-3 py-2'
+
+  %div{ class: 'flex flex-col space-y-2' }
+    = f.label :life_points, class: 'font-semibold text-gray-200'
+    = f.number_field :life_points, class: 'border rounded px-3 py-2'
+
+  %div{ class: 'flex flex-col space-y-2' }
+    = f.label :attack_points, class: 'font-semibold text-gray-200'
+    = f.number_field :attack_points, class: 'border rounded px-3 py-2'
+
+  %div{ class: 'flex items-center justify-end' }
+    = f.submit 'Save', class: 'bg-slate-500 hover:bg-slate-900 text-white font-bold py-2 px-4 rounded'

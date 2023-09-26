@@ -1,23 +1,24 @@
-%h1 Fight History
+%h1{class: 'text-4xl my-6 text-white font-bold tracking-wider text-center'} 🛡 Fights History 🗡
 
-%table
-  %thead
-    %tr
-      %th Timestamp
-      %th Character 1
-      %th Weapon 1
-      %th Character 2
-      %th Weapon 2
-      %th Winner
-  %tbody
-    - @fights.reverse_each do |fight|
+%div{class: 'bg-gradient-to-r from-emerald-400 to-fuchsia-800 text-white rounded-lg shadow p-8 max-w-full mb-4 overflow-x-auto'}
+  %table{class: 'w-full text-white text-lg border-separate space-y-6'}
+    %thead
       %tr
-        %td= fight.created_at.strftime("%d-%m-%Y %H:%M")
-        %td= fight.character1.name
-        %td= fight.weapon1 ? fight.weapon1.name : "No weapon"
-        %td= fight.character2.name
-        %td= fight.weapon2 ? fight.weapon2.name : "No weapon"
-        %td= fight.winner ? fight.winner.name : "It's a tie!"
+        %th{class: 'pb-2 text-3xl'} ⏰
+        %th{class: 'pb-2 text-3xl'} 🥋 Character 1
+        %th{class: 'pb-2 text-3xl'} 🗡 Weapon 1
+        %th{class: 'pb-2 text-3xl'} 🥋 Character 2
+        %th{class: 'pb-2 text-3xl'} 🗡 Weapon 2
+        %th{class: 'pb-2 text-3xl'} 🏆 Winner
+    %tbody
+      - @fights.reverse_each do |fight|
+        %tr
+          %td{class: 'py-2 border-b border-gray-500 text-center'}= fight.created_at.strftime("%d-%m-%Y %H:%M")
+          %td{class: 'py-2 border-b border-gray-500 text-center'}= fight.character1.name
+          %td{class: 'py-2 border-b border-gray-500 text-center'}= fight.weapon1 ? fight.weapon1.name : "🤚 No weapon"
+          %td{class: 'py-2 border-b border-gray-500 text-center'}= fight.character2.name
+          %td{class: 'py-2 border-b border-gray-500 text-center'}= fight.weapon2 ? fight.weapon2.name : "🤚 No weapon"
+          %td{class: 'py-2 border-b border-gray-500 text-center'}= fight.winner ? fight.winner.name : "🤝 It's a tie!"
 
-
-= link_to 'Back to Home', root_path
+%div{class: 'mt-6'}
+  = link_to 'Back to Home', root_path, class: 'text-xl bg-gradient-to-r from-indigo-700 to-blue-600 text-white px-6 py-2 rounded-full shadow-lg hover:from-blue-600 hover:to-indigo-700 transition duration-300'

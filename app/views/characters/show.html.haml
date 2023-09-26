@@ -1,12 +1,12 @@
 %p#notice= notice
 
-%p
-  %b Name:
+%div{class:'flex space-between items-center'}
+  %b Name
   = @character.name
-%p
+%div{class:'flex space-between items-center'}
   %b Life points:
   = @character.life_points
-%p
+%div{class:'flex space-between items-center'}
   %b Attack points:
   = @character.attack_points
 
