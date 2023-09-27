@@ -9,7 +9,7 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
-  %body
+  %body{class: "bg-game"}
     = render 'shared/navbar'
-    %div{class: 'p-32 bg-slate-800 min-h-screen'}
+    %div{class: 'p-32 min-h-screen'}
       = yield

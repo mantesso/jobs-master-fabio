@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+  
+.bg-game {
+    background-image: url('/bg_game.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
