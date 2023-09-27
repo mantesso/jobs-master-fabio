@@ -21,14 +21,10 @@ class CharactersController < ApplicationController
   def create
     @character = Character.new(character_params)
 
-    respond_to do |format|
-      if @character.save
-        format.html { redirect_to character_url(@character), notice: 'Character was successfully created.' }
-        format.json { render :show, status: :created, location: @character }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @character.errors, status: :unprocessable_entity }
-      end
+    if @character.save
+      redirect_to characters_path, notice: 'Character was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 

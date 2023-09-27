@@ -1,6 +1,5 @@
 class FightService
   XP_GAIN = 15
-  ATTACK_POINT_GAIN = 1
 
   def initialize(fight)
     @fight = fight
@@ -42,7 +41,6 @@ class FightService
 
   def award_winner
     @fight.winner.xp += XP_GAIN
-    @fight.winner.attack_points += ATTACK_POINT_GAIN
     @fight.winner.save!
   end
 end

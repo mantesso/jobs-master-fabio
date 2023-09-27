@@ -4,9 +4,18 @@ class Character < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :life_points, presence: true,
-                          numericality: { only_integer: true, greater_than_or_equal_to: 50, less_than_or_equal_to: 200 }
+                          numericality: {
+                            only_integer: true,
+                            greater_than_or_equal_to: 50,
+                            less_than_or_equal_to: 200
+                          }
+
   validates :attack_points, presence: true,
-                            numericality: { only_integer: true, greater_than_or_equal_to: 5, less_than_or_equal_to: 50 }
+                            numericality: {
+                              only_integer: true,
+                              greater_than_or_equal_to: 5,
+                              less_than_or_equal_to: 50
+                            }
 
   scope :alive, -> { where(deleted_at: nil) }
 
