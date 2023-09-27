@@ -10,13 +10,6 @@ class FightsController < ApplicationController
 
     if @fight.save
       FightService.new(@fight).perform
-
-      flash[:notice] = if @fight.winner
-                         "#{@fight.winner.name} won! They gained #{FightService::XP_GAIN} XP."
-                       else
-                         'The fight was a tie!'
-                       end
-
       redirect_to fight_path(@fight)
     else
       @characters = Character.all

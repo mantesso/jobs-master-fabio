@@ -1,4 +1,13 @@
-%h1
-  Hello World!
+%div{class: 'backdrop-blur-xl bg-black/30 rounded-xl py-8 flex flex-col justify-center items-center text-white space-y-8 p-12'}
+  %h1{class: 'text-3xl'}
+    🎉 Welcome to CaptainChallenge ! 🎉
 
-
+  %div{class: 'space-y-2 text-xl'}
+    %p 🥊 Choose your champions.
+    %p  🗡 Equip them with weapons... or not!
+    %p  🔥 Fight! The winner earns experience.
+    %p  📊 Check the history to relive epic fights.
+    %p Remember, every choice counts! Will your character be the ultimate champion?
+  
+  %div{class: 'my-4'}
+    = link_to 'Fight !', new_fight_path, class: 'bg-gradient-to-br from-indigo-700 to-blue-600 text-xl text-white px-6 py-3 rounded-full shadow-md hover:from-blue-600 hover:to-indigo-700 transition duration-300'

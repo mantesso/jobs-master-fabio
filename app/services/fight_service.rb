@@ -10,7 +10,7 @@ class FightService
   def perform
     compute_battle
     determine_winner
-    award_winner if @fight.winner
+    award_winner
   end
 
   private
